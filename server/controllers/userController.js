@@ -3,7 +3,7 @@ import { generateToken } from "../lib/utils.js"
 import User from "../models/User.js"
 import bcrypt from 'bcryptjs'
 
-const signUp = async(req,res) => {
+export const signUp = async(req,res) => {
     const {FullName , email , password , bio} = req.body
     try {
         if (!FullName || !email || !password || !bio) {
@@ -27,7 +27,7 @@ const signUp = async(req,res) => {
     }
 }
 
-const login = async(req,res) => {
+export const login = async(req,res) => {
     try {
         const {email,password} = req.body
         if(!email || !password){
@@ -47,11 +47,11 @@ const login = async(req,res) => {
     }
 }
 
-const checkAuth = (req,res) => {
+export const checkAuth = (req,res) => {
     res.json({success:true , user:req.user})
 }
 
-const updateProfile = async(req,res) => {
+export const updateProfile = async(req,res) => {
     try {
         const {profilePic , bio , FullName}  = req.body
         const userId = req.user._id
@@ -66,7 +66,4 @@ const updateProfile = async(req,res) => {
     } catch (error) {
         res.json({success:false , message:error.message}) 
     }
-}
-export default {
-    signUp,login,checkAuth,updateProfile
 }
