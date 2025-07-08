@@ -27,6 +27,25 @@ const signUp = async(req,res) => {
     }
 }
 
+const login = async(req,res) => {
+    try {
+        const {email,password} = req.body
+        if(!email || !password){
+            res.json({success:false , message:"Missing details"})
+        }
+        const userData = await User.findOne({email})
+        const isPasswordCorrect = await bcrypt.compare(password,userData.password)
+        if(!isPasswordCorrect){
+            res.json({success:false , message:"Invalid credentials"})
+        }
+        const token = generateToken(newUser._id)
+        res.json({success:true , userData , token , message:"Login Succesfully"
+        }) 
+    } catch (error) {
+        console.log(error)
+        res.json({success:false , message:error.message})
+    }
+}
 export default {
     signUp
 }
