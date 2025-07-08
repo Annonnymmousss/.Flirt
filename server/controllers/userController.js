@@ -1,4 +1,3 @@
-import e from "express"
 import { generateToken } from "../lib/utils.js"
 import User from "../models/User.js"
 import bcrypt from 'bcryptjs'
@@ -47,5 +46,5 @@ const login = async(req,res) => {
     }
 }
 export default {
-    signUp
+    signUp,login,
 }
