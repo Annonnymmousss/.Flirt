@@ -6,7 +6,7 @@ const ProfilePage = () => {
   const [selectedImg, setselectedImg] = useState(null)
   const navigate = useNavigate()
   const [name , setname] = useState("Martin Jhonson")
-  const [bio , setbio] = useState("hii there i am using .flirt")
+  const [bio , setbio] = useState("hii there i am using Flirtify")
   const handlesubmit = async(e) => {
     e.preventDefault();
     navigate('/')
